@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FBX Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Drop zone / empty state -->
+    <div id="drop-hint">
+      <div class="hint-card">
+        <div class="hint-icon">📦</div>
+        <h1>FBX Viewer</h1>
+        <p>Drag &amp; drop an <strong>.fbx</strong> file anywhere</p>
+        <p class="muted">or</p>
+        <button id="pick-btn" class="btn primary">Choose files…</button>
+        <p class="muted small-hint">Tip: select the .fbx <em>and</em> its .png textures together</p>
+        <input id="file-input" type="file" accept=".fbx,.png,.jpg,.jpeg,.bmp,.tga,.webp" multiple hidden />
+      </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <div id="loading-text">Loading…</div>
+    </div>
+
+    <!-- Control panel -->
+    <aside id="panel" class="hidden">
+      <div class="panel-header">
+        <span id="model-name">model.fbx</span>
+        <button id="close-btn" class="icon-btn" title="Close model">✕</button>
+      </div>
+
+      <div class="panel-section">
+        <label class="row">
+          <span>Wireframe</span>
+          <input type="checkbox" id="toggle-wireframe" />
+        </label>
+        <label class="row">
+          <span>Grid</span>
+          <input type="checkbox" id="toggle-grid" checked />
+        </label>
+        <label class="row">
+          <span>Auto-rotate</span>
+          <input type="checkbox" id="toggle-autorotate" />
+        </label>
+        <label class="row">
+          <span>Background</span>
+          <input type="color" id="bg-color" value="#1e2129" />
+        </label>
+      </div>
+
+      <div class="panel-section" id="anim-section">
+        <div class="section-title">Animation</div>
+        <select id="anim-select"></select>
+        <div class="anim-controls">
+          <button id="play-btn" class="btn small">⏸ Pause</button>
+        </div>
+        <label class="row">
+          <span>Speed</span>
+          <input type="range" id="anim-speed" min="0" max="2" step="0.1" value="1" />
+        </label>
+      </div>
+
+      <div class="panel-section">
+        <button id="reset-btn" class="btn small full">Reset camera</button>
+        <button id="screenshot-btn" class="btn small full">Save screenshot</button>
+      </div>
+
+      <div class="panel-section" id="stats">
+        <div class="section-title">Info</div>
+        <div class="stat"><span>Meshes</span><span id="stat-meshes">0</span></div>
+        <div class="stat"><span>Vertices</span><span id="stat-verts">0</span></div>
+        <div class="stat"><span>Triangles</span><span id="stat-tris">0</span></div>
+        <div class="stat"><span>Animations</span><span id="stat-anims">0</span></div>
+      </div>
+    </aside>
+
+    <div id="error" class="hidden"></div>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

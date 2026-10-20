@@ -1,0 +1,24 @@
+# Claude Code tooling / local config
+.claude/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node (only if you later add tooling)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Logs
+*.log
+
+# Local sample models (don't commit large binaries)
+*.fbx
+*.FBX
